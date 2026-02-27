@@ -33,6 +33,7 @@ function adicionarTarefa () {
 
         const btnRemover = document.createElement('button');
         btnRemover.textContent = 'Remover';
+        btnRemover.classList.add('btn-remover');
         btnRemover.addEventListener('click', function() {
             const index = tarefas.indexOf(texto);
             tarefas.splice(index, 1);

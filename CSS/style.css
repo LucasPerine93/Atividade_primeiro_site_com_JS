@@ -1,0 +1,58 @@
+#mensagem-erro {
+    color: red;
+    display: none;
+}
+
+#mensagem-sucesso {
+    color: green;
+    display: none;
+}
+
+
+.btn-remover {
+    margin-left: 300px;
+}
+
+
+#inserir {
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
+    outline: none;
+}
+
+#inserir:focus {
+    border-color: #4CAF50;
+}
+
+#btn-adicionar {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#btn-adicionar:hover {
+    background-color: #45a049;
+}
+
+
+.btn-remover {
+    margin-left: 10px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #e74c3c;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-remover:hover {
+    background-color: #c0392b;
+}
+
