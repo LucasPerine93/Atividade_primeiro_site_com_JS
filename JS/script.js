@@ -29,7 +29,22 @@ function adicionarTarefa () {
         tarefas.push(texto);
 
         const li = document.createElement('li');
-        li.textContent = texto;
+
+        const spanTexto = document.createElement('span');
+        spanTexto.textContent = texto;
+        li.appendChild(spanTexto);
+
+        const btnEditar = document.createElement('button');
+        btnEditar.textContent = 'Editar';
+        btnEditar.classList.add('btn-editar');
+        btnEditar.addEventListener('click', function() {
+            const novoTexto = prompt('Edite sua tarefa:', spanTexto.textContent);
+            if (novoTexto !== null && novoTexto.trim() !== '') {
+                const index = tarefas.indexOf(spanTexto.textContent);
+                tarefas[index] = novoTexto;
+                spanTexto.textContent = novoTexto;
+            }
+        });
 
         const btnRemover = document.createElement('button');
         btnRemover.textContent = 'Remover';
@@ -40,7 +55,8 @@ function adicionarTarefa () {
             li.remove();
         });
 
-        li.appendChild(btnRemover)
+        li.appendChild(btnEditar);
+        li.appendChild(btnRemover);
         tasks.appendChild(li);
 
         InputInserir.value = '';
