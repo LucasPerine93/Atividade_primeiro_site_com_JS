@@ -67,3 +67,16 @@
     background-color: #c0392b;
 }
 
+/* Classes adicionadas pelo JS */
+.btn-salvar {
+    background-color: #2ecc71 !important;
+}
+
+.btn-salvar:hover {
+    background-color: #27ae60 !important;
+}
+
+.mostrar-mensagem {
+    display: block !important;
+}
+

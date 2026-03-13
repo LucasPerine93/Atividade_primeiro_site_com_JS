@@ -11,13 +11,13 @@ function validarTexto() {
     const texto = InputInserir.value.trim();
 
     if(texto === '' ) {
-        mensagemErro.style.display = 'block';
-        mensagemSucesso.style.display = 'none';
+        mensagemErro.classList.add('mostrar-mensagem');
+        mensagemSucesso.classList.remove('mostrar-mensagem');
         return false;
 
     } else {
-        mensagemErro.style.display = 'none';
-        mensagemSucesso.style.display = 'block';
+        mensagemErro.classList.remove('mostrar-mensagem');
+        mensagemSucesso.classList.add('mostrar-mensagem');
         return true;
     }
 }
@@ -37,12 +37,42 @@ function adicionarTarefa () {
         const btnEditar = document.createElement('button');
         btnEditar.textContent = 'Editar';
         btnEditar.classList.add('btn-editar');
+        
+        let textoAntigo = texto;
+
         btnEditar.addEventListener('click', function() {
-            const novoTexto = prompt('Edite sua tarefa:', spanTexto.textContent);
-            if (novoTexto !== null && novoTexto.trim() !== '') {
-                const index = tarefas.indexOf(spanTexto.textContent);
-                tarefas[index] = novoTexto;
-                spanTexto.textContent = novoTexto;
+            if (btnEditar.textContent === 'Editar') {
+
+                const inputEdicao = document.createElement('input');
+                inputEdicao.type = 'text';
+                inputEdicao.value = spanTexto.textContent;
+                inputEdicao.classList.add('input-edicao');
+
+                li.replaceChild(inputEdicao, spanTexto);
+                
+                btnEditar.textContent = 'Salvar';
+                btnEditar.classList.add('btn-salvar'); 
+                inputEdicao.focus();
+                
+            } else {
+
+                const inputEdicao = li.querySelector('.input-edicao');
+                const novoTexto = inputEdicao.value.trim();
+                
+                if (novoTexto !== '') {
+
+                    const index = tarefas.indexOf(textoAntigo);
+                    if (index !== -1) tarefas[index] = novoTexto;
+                    
+                    spanTexto.textContent = novoTexto;
+                    textoAntigo = novoTexto;
+                }
+                
+
+                li.replaceChild(spanTexto, inputEdicao);
+                
+                btnEditar.textContent = 'Editar';
+                btnEditar.classList.remove('btn-salvar'); 
             }
         });
 
